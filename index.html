@@ -7,6 +7,10 @@
   <title>Article</title>
 </head>
 <style>
+  body {
+    font-size: 18px;
+    letter-spacing: 0.1px;
+  }
   .container {
     width: 960px;
     margin-left: auto;
@@ -20,6 +24,13 @@
   iframe {
     width: 960px;
     height: 600px;
+  }
+  kbd {
+    padding: 4px 2px;
+    font-size: 14px;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    border-radius: 2px;
   }
 </style>
 
@@ -60,7 +71,7 @@
     <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
     <p>
-      Следующим шагом будет добавление якорних ссылок, которые послужат нам пагинацией для
+      Следующим шагом будет добавление ссылок, которые послужат нам навигацией для
       сладера и основным инструментом для обеспечания его работы с отключенным JS.
     </p>
 
@@ -80,19 +91,41 @@
 
     <p>
       Наш слайдер работает. Теперь выключем JS и посмотрим на результат.
+      (если вы будете смотреть примеры на CodePan, до добавте в конец URL нарамерты <kbd>?turn_off_js=true</kbd>
+      чтобы отключить JS)
+    </p>
+    <iframe src="https://codepen.io/y_kosovych/pen/eYNZEbr?turn_off_js=true" width="960" height="600" frameborder="0"></iframe>
+    <p>
+      При выключенном JS скрипт Slick Carousel не сработывает (что логично), а значит не добавляет свои классы и дополнительные
+      элементы. Слады выстроились один под одним, согласно блочной модели. Теперь мы может начать писать fallback для клайдера.
+      В продакшн коде вы можете подключить CSS в
+      <kbd><code>&lt;head&gt;</code></kbd> с помошью тега <kbd><code>&lt;noscript&gt;</code></kbd>
+    </p>
+    <img src="./img/carbon_6.png" alt="">
+    <p>
+      Я же, ввиду ограничений CоdePаn, все стили буду писать в HTML файле все в том же <kbd><code>&lt;noscript&gt;</code></kbd>.
+      И первое, что я сделаю, так это с помошью абсолютного позиционирования расположу все слайды друг за другом, сделаю ссылки
+      навигации видимими.
+    </p>
+    <img src="./img/carbon_7.png" alt="">
+    <p>
+      Следующим шагом нужно добавить для каждого слайда ID и ссылки навигации сделать якорями на соответствующие слайды.
+    </p>
+    <img src="./img/carbon_8.png" alt="">
+    <p>
+      А теперь (следите за руками) c помошью псевдокласса <kbd><code>:target</code></kbd>
+      (<a href="https://developer.mozilla.org/ru/docs/Web/CSS/:target">посмотреть</a>)
+      мы будем отображать нужный нам слайд, пока все остальные будут скрыты. А так же по
+      уполчанию первый сладер всегда будет виден.
+    </p>
+    <img src="./img/carbon_9.png" alt="">
+
+    <p>
+      Вот и все, наш сладер assesible работает без JS :)
     </p>
 
-    <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="y_kosovych"
-      data-slug-hash="eYNZEbr"
-      style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
-      data-pen-title="Slider - 3(JS off)">
-      <span>See the Pen <a href="https://codepen.io/y_kosovych/pen/eYNZEbr?turn_off_js=true">
-          Slider - 3(JS off)</a> by Yaroslav (<a href="https://codepen.io/y_kosovych">@y_kosovych</a>)
-        on <a href="https://codepen.io">CodePen</a>.</span>
-    </p>
-    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+    <iframe src="https://codepen.io/y_kosovych/pen/RwPaBGx?turn_off_js=true" width="960" height="600" frameborder="0"></iframe>
   </div>
-
 </body>
 
 </html>
